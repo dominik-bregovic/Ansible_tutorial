@@ -1,0 +1,27 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: update repo index
+    apt:
+      update_cache: yes
+
+# apt is the module and apache 2 the name of the package i want to install
+  - name: install apache2 package 
+    apt:
+      name: apache2 
+
+
+  - name: add php support for apache
+    apt:
+      name: libapache2-mod-php
+      state: latest
+
+# apt is the module and apache 2 the name of the package i want to install and with 
+#state i can choose latest, absent,...
+  - name: install apache2 package 
+    apt:
+      name: apache2
+      state: absent 
